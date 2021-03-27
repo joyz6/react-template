@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "ESNext",
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "jsx": "react",
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "baseUrl": "./",
+        "strict": true,
+        "paths": {
+            "@/*": ["src/*"],
+            "@@/*": ["./*"]
+        },
+        "allowSyntheticDefaultImports": true
+    },
+    "include": ["mock/**/*", "config/**/*", "src/**/*", "typings.d.ts"],
+    "exclude": ["node_modules", "build", "scripts", "jest"]
+}
