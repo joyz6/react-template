@@ -1,5 +1,5 @@
 import FriendlyErrorsWebpackPlugin, { Options as FriendlyErrorsOptions } from 'friendly-errors-webpack-plugin'
-import { devServerPort } from '../webpack.devserver.config'
+import { devServerPort } from '../environment'
 
 /**
  * webpack 友好提示插件

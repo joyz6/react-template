@@ -1,9 +1,10 @@
+import { appAssetIcon } from '../environment'
+
 export default {
     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+    include: appAssetIcon,
     use: [
-        {
-            loader: 'babel-loader'
-        },
+        'babel-loader',
         {
             loader: '@svgr/webpack',
             options: {

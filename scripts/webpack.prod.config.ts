@@ -1,7 +1,7 @@
 import { Configuration } from 'webpack'
 import { merge } from 'webpack-merge'
+import { styleLoader } from './loaders'
 import { htmlWebpackPlugin, webpackDefinePlugin, minicssExtractPlugin, MiniCssExtractPlugin } from './plugins'
-import styleLoader from './loaders/styles'
 
 export default merge(require('./webpack.common.config').default, {
     /**

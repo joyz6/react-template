@@ -2,12 +2,7 @@ import path from 'path'
 import { Configuration } from 'webpack-dev-server'
 import { appPath } from './environment'
 import mockerApi from 'mocker-api'
-import { findSync } from './environment'
-
-/**
- * webpack-dev-server 端口号
- */
-export const devServerPort = 3000
+import { findSync, devServerPort } from './environment'
 
 /**
  * webpack-dev-server 服务器配置
@@ -16,7 +11,7 @@ export default {
     /**
      * 端口号
      */
-    port: 3000,
+    port: devServerPort,
 
     /**
      * 对所有服务器资源采用gzip进行压缩

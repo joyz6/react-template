@@ -1,7 +1,7 @@
 import { Configuration } from 'webpack'
 import { merge } from 'webpack-merge'
 import { appBuildFile } from './environment'
-import styleLoader from './loaders/styles'
+import { styleLoader } from './loaders'
 import { htmlWebpackPlugin, webpackDefinePlugin, friendlyErrorsWebpackPlugin } from './plugins'
 
 export default merge(require('./webpack.common.config').default, {

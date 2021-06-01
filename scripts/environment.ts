@@ -16,6 +16,21 @@ export const appEjsFile = 'index.ejs'
 export const appBuildFile = 'bundle.js'
 
 /**
+ * webpack-dev-server 服务器端口号
+ */
+export const devServerPort = 3000
+
+/**
+ * 资源目录
+ */
+export const appAsset = path.join(appSrc, 'assets')
+
+/**
+ * Svg图标目录
+ * 该目录下的svg文件只会以 react component形式被引入
+ */
+export const appAssetIcon = path.join(appAsset, 'icons')
+/**
  * 查找文件
  */
 export const findSync = (startPath: string): Array<any> => {

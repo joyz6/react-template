@@ -1,6 +1,6 @@
 import path from 'path'
 import { Configuration } from 'webpack'
-import { svgrLoader } from './loaders'
+import { svgrLoader, assetLoader } from './loaders'
 import { appSrc, appBuild, appEntryFile, appPath } from './environment'
 
 /**
@@ -55,7 +55,8 @@ export default {
                 exclude: /node_modules/,
                 use: 'babel-loader'
             },
-            svgrLoader
+            svgrLoader,
+            assetLoader
         ]
     }
 } as Configuration
