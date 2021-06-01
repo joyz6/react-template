@@ -7,18 +7,25 @@ import fs from 'fs'
 export const appDirectory = fs.realpathSync(process.cwd())
 export const resolveApp = (relativePath: string) => path.resolve(appDirectory, relativePath)
 
+/**
+ * 项目根目录
+ */
 export const appPath = resolveApp('.')
-export const appSrc = resolveApp('src')
-export const appBuild = resolveApp('build')
-export const appPublic = resolveApp('public')
-export const appEntryFile = 'index.tsx'
-export const appEjsFile = 'index.ejs'
-export const appBuildFile = 'bundle.js'
 
 /**
- * webpack-dev-server 服务器端口号
+ * 项目源文件目录
  */
-export const devServerPort = 3000
+export const appSrc = resolveApp('src')
+
+/**
+ * 生产环境下文件编译目录
+ */
+export const appBuild = resolveApp('build')
+
+/**
+ * 公共文件目录
+ */
+export const appPublic = resolveApp('public')
 
 /**
  * 资源目录
@@ -30,6 +37,15 @@ export const appAsset = path.join(appSrc, 'assets')
  * 该目录下的svg文件只会以 react component形式被引入
  */
 export const appAssetIcon = path.join(appAsset, 'icons')
+export const appEntryFile = 'index.tsx'
+export const appEjsFile = 'index.ejs'
+export const appBuildFile = 'bundle.js'
+
+/**
+ * webpack-dev-server 服务器端口号
+ */
+export const devServerPort = 3000
+
 /**
  * 查找文件
  */
