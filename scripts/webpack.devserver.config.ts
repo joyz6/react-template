@@ -5,6 +5,11 @@ import mockerApi from 'mocker-api'
 import { findSync } from './environment'
 
 /**
+ * webpack-dev-server 端口号
+ */
+export const devServerPort = 3000
+
+/**
  * webpack-dev-server 服务器配置
  */
 export default {

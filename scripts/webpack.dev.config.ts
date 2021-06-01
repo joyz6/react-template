@@ -1,8 +1,8 @@
 import { Configuration } from 'webpack'
 import { merge } from 'webpack-merge'
 import { appBuildFile } from './environment'
-import { cssLoader } from './webpack.module.config'
-import { htmlWebpackPlugin, webpackDefinePlugin } from './webpack.plugins.config'
+import styleLoader from './loaders/styles'
+import { htmlWebpackPlugin, webpackDefinePlugin, friendlyErrorsWebpackPlugin } from './plugins'
 
 export default merge(require('./webpack.common.config').default, {
     /**
@@ -29,7 +29,7 @@ export default merge(require('./webpack.common.config').default, {
      * 模块配置
      */
     module: {
-        rules: [cssLoader({ styleLoader: 'style-loader' })]
+        rules: [styleLoader('style-loader')]
     },
 
     /**
@@ -44,7 +44,12 @@ export default merge(require('./webpack.common.config').default, {
         /**
          * 注册全局变量
          */
-        webpackDefinePlugin('development')
+        webpackDefinePlugin('development'),
+
+        /**
+         * 友好错误提示插件
+         */
+        friendlyErrorsWebpackPlugin()
     ],
 
     /**

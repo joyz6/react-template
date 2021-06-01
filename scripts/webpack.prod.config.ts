@@ -1,8 +1,7 @@
 import { Configuration } from 'webpack'
 import { merge } from 'webpack-merge'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import { cssLoader } from './webpack.module.config'
-import { htmlWebpackPlugin, webpackDefinePlugin } from './webpack.plugins.config'
+import { htmlWebpackPlugin, webpackDefinePlugin, minicssExtractPlugin, MiniCssExtractPlugin } from './plugins'
+import styleLoader from './loaders/styles'
 
 export default merge(require('./webpack.common.config').default, {
     /**
@@ -29,7 +28,7 @@ export default merge(require('./webpack.common.config').default, {
      * 模块配置
      */
     module: {
-        rules: [cssLoader({ styleLoader: MiniCssExtractPlugin.loader })]
+        rules: [styleLoader(MiniCssExtractPlugin.loader)]
     },
 
     /**
@@ -60,7 +59,7 @@ export default merge(require('./webpack.common.config').default, {
         /**
          * CSS 分离
          */
-        new MiniCssExtractPlugin({
+        minicssExtractPlugin({
             filename: '[name].css',
             chunkFilename: '[id].css'
         })
