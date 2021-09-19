@@ -9,6 +9,16 @@ import { findSync, devServerPort } from './environment'
  */
 export default {
     /**
+     * `webpack-dev-middleware` plugin configuration
+     */
+    devMiddleware: {
+        /**
+         * 该属性配置是用来在编译的时候再命令行中输出的内容
+         */
+        stats: 'none'
+    },
+
+    /**
      * 端口号
      */
     port: devServerPort,
@@ -27,23 +37,28 @@ export default {
     hot: true,
 
     /**
-     * 使用内联自动刷新和模块热替换模式
+     * 客户端配置
      */
-    inline: true,
-
-    /**
-     * 该属性配置是用来在编译的时候再命令行中输出的内容
-     */
-    stats: 'errors-only',
-
-    /**
-     * 该属性是用来在编译出错的时候，在浏览器页面上显示错误。该属性值默认为false，需要的话，设置该参数为true
-     */
-    overlay: {
+    client: {
         /**
-         * 当出现编译器错误或警告时，就在网页上显示一层黑色的背景层和错误信息
+         * 日志级别
          */
-        errors: true
+        logging: 'info',
+
+        /**
+         * Prints compilation progress in percentage in the browser.
+         */
+        progress: true,
+
+        /**
+         * 是/否将编译的错误信息显示在浏览器页面上
+         */
+        overlay: {
+            /**
+             * 是/否将编译的错误信息显示在浏览器页面上
+             */
+            errors: true
+        }
     },
 
     /**
@@ -53,21 +68,16 @@ export default {
     historyApiFallback: true,
 
     /**
-     * 该配置项指定了服务器资源的根目录，如果不配置 contentBase 的话，那么 contentBase 默认是当前执行的目录,一般是项目的根目录
-     */
-    contentBase: appPath,
-
-    /**
      * 在其他所有中间件之前执行的自定义中间件
      */
-    before: (app) => {
+    onBeforeSetupMiddleware: (devServer) => {
         const mockFiles = findSync(path.join(appPath, 'mock'))
 
         if (mockFiles) {
             /**
              * mock
              */
-            mockerApi(app, mockFiles)
+            mockerApi(devServer.app, mockFiles)
         }
     }
 } as Configuration
